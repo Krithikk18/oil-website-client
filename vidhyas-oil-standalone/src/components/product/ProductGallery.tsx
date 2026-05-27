@@ -26,6 +26,10 @@ export default function ProductGallery({ image, thumbnails, name }: ProductGalle
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="w-full h-full object-cover"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&q=80";
+            }}
           />
         </AnimatePresence>
       </div>
@@ -41,7 +45,16 @@ export default function ProductGallery({ image, thumbnails, name }: ProductGalle
               selected === i ? "border-[#1b4332]" : "border-transparent hover:border-[#95d5b2]"
             }`}
           >
-            <img src={src} alt={`${name} view ${i + 1}`} loading="lazy" className="w-full h-full object-cover" />
+            <img
+              src={src}
+              alt={`${name} view ${i + 1}`}
+              loading="lazy"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80";
+              }}
+            />
           </button>
         ))}
       </div>

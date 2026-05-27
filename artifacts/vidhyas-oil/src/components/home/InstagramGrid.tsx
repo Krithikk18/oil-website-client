@@ -3,11 +3,11 @@ import { SiInstagram } from "react-icons/si";
 
 const images = [
   { src: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80", alt: "Oil bottle" },
-  { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80", alt: "Nature hills" },
-  { src: "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=400&q=80", alt: "Seeds" },
-  { src: "https://images.unsplash.com/photo-1592503254549-d83d24a4dfab?w=400&q=80", alt: "Oil pour" },
-  { src: "https://images.unsplash.com/photo-1561459158-bb39df89eb4a?w=400&q=80", alt: "Herbs" },
-  { src: "https://images.unsplash.com/photo-1471928020535-cf55d0bc3019?w=400&q=80", alt: "Green plants" },
+  { src: "https://images.unsplash.com/photo-1519162808019-7de1100ce9bf?w=400&q=80", alt: "Coconut" },
+  { src: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&q=80", alt: "Groundnuts" },
+  { src: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400&q=80", alt: "Seeds" },
+  { src: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&q=80", alt: "Herbs and leaves" },
+  { src: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80", alt: "Oil pour" },
 ];
 
 export default function InstagramGrid() {
@@ -52,6 +52,10 @@ export default function InstagramGrid() {
                 alt={img.alt}
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80";
+                }}
               />
               <div className="absolute inset-0 bg-[#1b4332]/0 group-hover:bg-[#1b4332]/60 transition-all duration-300 flex items-center justify-center">
                 <SiInstagram

@@ -71,6 +71,10 @@ export default function FeaturedProducts() {
                     alt={product.name}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80";
+                    }}
                   />
                   <div className="absolute top-3 left-3">
                     <span className="text-[10px] font-medium tracking-wider uppercase bg-[#1b4332] text-[#F9F6F0] rounded-full px-2.5 py-1">

@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
 const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80", alt: "Oil bottle" },
-  { src: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&q=80", alt: "Groundnut ingredients" },
-  { src: "https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=400&q=80", alt: "Mustard field" },
-  { src: "https://images.unsplash.com/photo-1509358271058-acd22cc93702?w=400&q=80", alt: "Neem leaves" },
-  { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80", alt: "Coconut ingredients" },
-  { src: "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=400&q=80", alt: "Seeds" },
+  { src: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80", alt: "Cold pressed oil bottle" },
+  { src: "https://images.unsplash.com/photo-1519162808019-7de1100ce9bf?w=400&q=80", alt: "Coconut" },
+  { src: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&q=80", alt: "Groundnuts" },
+  { src: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400&q=80", alt: "Seeds" },
+  { src: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&q=80", alt: "Herbs and leaves" },
+  { src: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80", alt: "Oil pour" },
 ];
 
 export default function MarqueeGallery() {
@@ -36,6 +36,10 @@ export default function MarqueeGallery() {
                 alt={img.alt}
                 loading="lazy"
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80";
+                }}
               />
               <div className="absolute inset-0 bg-[#1b4332]/10 hover:bg-transparent transition-colors duration-300" />
             </div>

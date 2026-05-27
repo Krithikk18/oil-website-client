@@ -42,6 +42,10 @@ export default function Checkout() {
                       alt={item.name}
                       loading="lazy"
                       className="w-20 h-20 rounded-xl object-cover bg-[#f5f0e8] shrink-0"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80";
+                      }}
                     />
                     <div className="flex-1">
                       <h2 className="font-serif text-lg font-semibold text-[#1b4332]">

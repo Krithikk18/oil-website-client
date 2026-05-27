@@ -131,6 +131,10 @@ export default function Hero() {
                 src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&q=80"
                 alt="Premium cold-pressed oil"
                 className="absolute inset-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-cover rounded-[35%_65%_55%_45%/40%_40%_60%_60%] shadow-2xl"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&q=80";
+                }}
               />
               {/* Badge */}
               <motion.div

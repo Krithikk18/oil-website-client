@@ -45,6 +45,10 @@ export default function RelatedProducts({ products }: RelatedProductsProps) {
                     alt={product.name}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80";
+                    }}
                   />
                 </div>
               </Link>
