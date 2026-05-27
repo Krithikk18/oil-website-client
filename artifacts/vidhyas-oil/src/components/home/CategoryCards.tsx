@@ -7,7 +7,7 @@ const categories = [
     label: "Cooking Oils",
     tagline: "Nourish your family",
     href: "/shop?category=cooking",
-    image: "https://images.unsplash.com/photo-1585233882219-f0e01c7c2f4a?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&q=80",
     testId: "card-category-cooking",
   },
   {
@@ -21,7 +21,7 @@ const categories = [
     label: "Medicinal Oils",
     tagline: "Ancient healing",
     href: "/shop?category=medicinal",
-    image: "https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1509358271058-acd22cc93702?w=800&q=80",
     testId: "card-category-medicinal",
   },
 ];
@@ -49,7 +49,7 @@ export default function CategoryCards() {
           Shop by Category
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full overflow-hidden">
           {categories.map((cat, i) => (
             <motion.div
               key={cat.label}
@@ -57,6 +57,7 @@ export default function CategoryCards() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
+              className="w-full overflow-hidden"
             >
               <Link href={cat.href} data-testid={cat.testId}>
                 <div className="relative h-80 lg:h-96 overflow-hidden rounded-2xl cursor-pointer group">

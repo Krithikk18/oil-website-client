@@ -15,7 +15,7 @@ export default function Hero() {
   const marqueeText = "COLD PRESSED · TRADITIONAL · PURE · NATURAL · HANDCRAFTED · CHENNAI · ";
 
   return (
-    <section className="relative min-h-screen bg-[#F9F6F0] overflow-hidden">
+    <section className="relative min-h-screen bg-[#F9F6F0] overflow-x-hidden">
       {/* Grain texture overlay */}
       <div
         className="absolute inset-0 pointer-events-none z-10 opacity-[0.035]"
@@ -45,20 +45,21 @@ export default function Hero() {
               variants={staggerContainer}
               initial="initial"
               animate="animate"
-              className="overflow-hidden"
             >
-              <div className="overflow-hidden">
+              <div>
                 <motion.h1
                   variants={wordReveal}
-                  className="font-serif text-[20vw] sm:text-[15vw] md:text-[12vw] lg:text-[10vw] xl:text-[8vw] font-bold text-[#1b4332] leading-none tracking-tight"
+                  className="font-serif font-bold text-[#1b4332] leading-[0.9] tracking-tight"
+                  style={{ fontSize: "clamp(3.5rem, 12vw, 9rem)" }}
                 >
                   VIDHYA'S
                 </motion.h1>
               </div>
-              <div className="overflow-hidden">
+              <div>
                 <motion.h1
                   variants={wordReveal}
-                  className="font-serif text-[20vw] sm:text-[15vw] md:text-[12vw] lg:text-[10vw] xl:text-[8vw] font-bold text-[#1b4332] leading-none tracking-tight -mt-2"
+                  className="font-serif font-bold text-[#1b4332] leading-[0.9] tracking-tight -mt-2"
+                  style={{ fontSize: "clamp(3.5rem, 12vw, 9rem)" }}
                 >
                   OIL
                 </motion.h1>
