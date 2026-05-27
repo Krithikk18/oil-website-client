@@ -2,26 +2,46 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
     if (!form.name.trim()) newErrors.name = "Name is required";
     if (!form.email.includes("@")) newErrors.email = "Valid email is required";
     if (form.message.length < 10) newErrors.message = "Message must be at least 10 characters";
-    return newErrors;
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length > 0) { setErrors(errs); return; }
-    setErrors({});
-    setSubmitted(true);
+    if (!validate()) return;
+    setIsSubmitting(true);
+    try {
+      await emailjs.send(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID", 
+        {
+          from_name: form.name,
+          from_email: form.email,
+          phone: form.phone,
+          message: form.message,
+        },
+        "YOUR_PUBLIC_KEY"
+      );
+      setSubmitted(true);
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } catch {
+      setErrors({ submit: "Failed to send message. Please try WhatsApp or call us directly." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass = (field: string) =>
@@ -156,58 +176,75 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-[#1a1a1a] mb-1.5">Name *</label>
+                  <label htmlFor="contact-name" className="block text-sm font-medium text-[#1a1a1a] mb-1.5">Name *</label>
+                  <p id="contact-name-hint" className="sr-only">Enter your full name.</p>
                   <input
+                    id="contact-name"
                     type="text"
                     value={form.name}
                     onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                     placeholder="Your full name"
                     className={inputClass("name")}
+                    aria-describedby={`contact-name-hint${errors.name ? " contact-name-error" : ""}`}
+                    aria-invalid={Boolean(errors.name)}
                     data-testid="input-contact-name"
                   />
-                  {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+                  {errors.name && <p id="contact-name-error" className="text-red-500 text-xs mt-1">{errors.name}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#1a1a1a] mb-1.5">Email *</label>
+                  <label htmlFor="contact-email" className="block text-sm font-medium text-[#1a1a1a] mb-1.5">Email *</label>
+                  <p id="contact-email-hint" className="sr-only">Enter your email address.</p>
                   <input
+                    id="contact-email"
                     type="email"
                     value={form.email}
                     onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                     placeholder="your@email.com"
                     className={inputClass("email")}
+                    aria-describedby={`contact-email-hint${errors.email ? " contact-email-error" : ""}`}
+                    aria-invalid={Boolean(errors.email)}
                     data-testid="input-contact-email"
                   />
-                  {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                  {errors.email && <p id="contact-email-error" className="text-red-500 text-xs mt-1">{errors.email}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#1a1a1a] mb-1.5">Phone</label>
+                  <label htmlFor="contact-phone" className="block text-sm font-medium text-[#1a1a1a] mb-1.5">Phone</label>
+                  <p id="contact-phone-hint" className="sr-only">Enter your phone number.</p>
                   <input
+                    id="contact-phone"
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
                     placeholder="+91 98765 43210"
                     className={inputClass("phone")}
+                    aria-describedby="contact-phone-hint"
                     data-testid="input-contact-phone"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#1a1a1a] mb-1.5">Message *</label>
+                  <label htmlFor="contact-message" className="block text-sm font-medium text-[#1a1a1a] mb-1.5">Message *</label>
+                  <p id="contact-message-hint" className="sr-only">Enter a message of at least 10 characters.</p>
                   <textarea
+                    id="contact-message"
                     value={form.message}
                     onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                     placeholder="How can we help you?"
                     rows={5}
                     className={inputClass("message") + " resize-none"}
+                    aria-describedby={`contact-message-hint${errors.message ? " contact-message-error" : ""}`}
+                    aria-invalid={Boolean(errors.message)}
                     data-testid="input-contact-message"
                   />
-                  {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
+                  {errors.message && <p id="contact-message-error" className="text-red-500 text-xs mt-1">{errors.message}</p>}
                 </div>
+                {errors.submit && <p className="text-red-500 text-xs text-center">{errors.submit}</p>}
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   data-testid="button-contact-submit"
-                  className="w-full py-3.5 bg-[#1b4332] text-white font-medium rounded-xl hover:bg-[#2d6a4f] transition-colors"
+                  className="w-full py-3.5 bg-[#1b4332] text-white font-medium rounded-xl hover:bg-[#2d6a4f] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             )}

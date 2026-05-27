@@ -50,7 +50,7 @@ export default function Hero() {
               <div className="overflow-hidden">
                 <motion.h1
                   variants={wordReveal}
-                  className="font-serif text-[14vw] sm:text-[12vw] lg:text-[10vw] xl:text-[9vw] font-bold text-[#1b4332] leading-none tracking-tight"
+                  className="font-serif text-[20vw] sm:text-[15vw] md:text-[12vw] lg:text-[10vw] xl:text-[8vw] font-bold text-[#1b4332] leading-none tracking-tight"
                 >
                   VIDHYA'S
                 </motion.h1>
@@ -58,7 +58,7 @@ export default function Hero() {
               <div className="overflow-hidden">
                 <motion.h1
                   variants={wordReveal}
-                  className="font-serif text-[14vw] sm:text-[12vw] lg:text-[10vw] xl:text-[9vw] font-bold text-[#1b4332] leading-none tracking-tight -mt-2"
+                  className="font-serif text-[20vw] sm:text-[15vw] md:text-[12vw] lg:text-[10vw] xl:text-[8vw] font-bold text-[#1b4332] leading-none tracking-tight -mt-2"
                 >
                   OIL
                 </motion.h1>

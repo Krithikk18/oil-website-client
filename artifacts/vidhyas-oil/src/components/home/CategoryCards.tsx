@@ -63,6 +63,7 @@ export default function CategoryCards() {
                   <img
                     src={cat.image}
                     alt={cat.label}
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   {/* Gradient overlay */}

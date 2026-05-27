@@ -34,6 +34,7 @@ export default function MarqueeGallery() {
               <img
                 src={img.src}
                 alt={img.alt}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-[#1b4332]/10 hover:bg-transparent transition-colors duration-300" />

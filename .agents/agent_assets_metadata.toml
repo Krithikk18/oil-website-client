@@ -1,8 +1,0 @@
-uploads = []
-generated = []
-
-[[outputs]]
-id = "TrTPm49hud9L73DyycAVR"
-uri = "file://vidhyas-oil-code.tar.gz"
-type = "unspecified"
-title = "Vidhya's Oil — Source Code"

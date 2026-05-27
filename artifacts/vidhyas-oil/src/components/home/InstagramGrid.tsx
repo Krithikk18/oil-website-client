@@ -50,6 +50,7 @@ export default function InstagramGrid() {
               <img
                 src={img.src}
                 alt={img.alt}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-[#1b4332]/0 group-hover:bg-[#1b4332]/60 transition-all duration-300 flex items-center justify-center">

@@ -73,11 +73,11 @@ export const products: Product[] = [
     description: "A dense, deeply nourishing oil extracted slowly without heat. Our castor oil is a miracle worker for hair growth, skin healing, and joint pain relief. Thick, pure, and incredibly potent.",
     shortDescription: "Thick, potent castor oil for rapid hair growth and deep skin healing.",
     sizes: [{ label: "200ml", price: 250 }, { label: "500ml", price: 550 }],
-    image: "https://images.unsplash.com/photo-1612198188060-c7a90f9f7b8e?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
     thumbnails: [
-      "https://images.unsplash.com/photo-1612198188060-c7a90f9f7b8e?w=400&q=80",
-      "https://images.unsplash.com/photo-1612198188060-c7a90f9f7b8e?w=600&q=80",
-      "https://images.unsplash.com/photo-1612198188060-c7a90f9f7b8e?w=200&q=80"
+      "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&q=80",
+      "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&q=80",
+      "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=200&q=80",
     ],
     benefits: ["Stimulates hair follicles for thicker growth", "Relieves joint and muscle pain when massaged", "Deeply moisturizes dry skin and heals scars"],
     howToUse: "For hair: mix with coconut or sesame oil and massage into scalp. For body: apply gently on affected areas.",
@@ -94,11 +94,11 @@ export const products: Product[] = [
     description: "Extracted from black mustard seeds, this pungent and flavorful oil brings a sharp, authentic kick to your dishes. Cold pressing ensures the essential allyl isothiocyanate is preserved for maximum health benefits.",
     shortDescription: "Pungent and authentic mustard oil for robust flavor and immunity.",
     sizes: [{ label: "500ml", price: 190 }, { label: "1L", price: 360 }],
-    image: "https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80",
     thumbnails: [
-      "https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=400&q=80",
-      "https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=600&q=80",
-      "https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=200&q=80"
+      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&q=80",
+      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80",
+      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=200&q=80",
     ],
     benefits: ["Boosts immunity and fights infections", "Improves blood circulation", "Natural preservative for pickles"],
     howToUse: "Heat until smoking before cooking to mellow the flavor. Essential for traditional pickles and robust curries.",

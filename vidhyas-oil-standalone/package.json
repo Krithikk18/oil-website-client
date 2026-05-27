@@ -64,6 +64,7 @@
     "zod": "^3.23.0"
   },
   "devDependencies": {
+    "@emailjs/browser": "^4.3.3",
     "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^22.10.0",
     "@types/react": "^18.3.12",

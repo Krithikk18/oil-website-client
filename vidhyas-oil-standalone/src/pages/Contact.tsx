@@ -2,26 +2,46 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
     if (!form.name.trim()) newErrors.name = "Name is required";
     if (!form.email.includes("@")) newErrors.email = "Valid email is required";
     if (form.message.length < 10) newErrors.message = "Message must be at least 10 characters";
-    return newErrors;
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length > 0) { setErrors(errs); return; }
-    setErrors({});
-    setSubmitted(true);
+    if (!validate()) return;
+    setIsSubmitting(true);
+    try {
+      await emailjs.send(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID", 
+        {
+          from_name: form.name,
+          from_email: form.email,
+          phone: form.phone,
+          message: form.message,
+        },
+        "YOUR_PUBLIC_KEY"
+      );
+      setSubmitted(true);
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } catch {
+      setErrors({ submit: "Failed to send message. Please try WhatsApp or call us directly." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass = (field: string) =>
@@ -217,12 +237,14 @@ export default function Contact() {
                   />
                   {errors.message && <p id="contact-message-error" className="text-red-500 text-xs mt-1">{errors.message}</p>}
                 </div>
+                {errors.submit && <p className="text-red-500 text-xs text-center">{errors.submit}</p>}
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   data-testid="button-contact-submit"
-                  className="w-full py-3.5 bg-[#1b4332] text-white font-medium rounded-xl hover:bg-[#2d6a4f] transition-colors"
+                  className="w-full py-3.5 bg-[#1b4332] text-white font-medium rounded-xl hover:bg-[#2d6a4f] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             )}

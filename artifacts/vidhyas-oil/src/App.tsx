@@ -30,10 +30,16 @@ function ScrollToTop() {
 function Router() {
   return (
     <>
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#1b4332] focus:text-white focus:rounded-full focus:text-sm"
+      >
+        Skip to content
+      </a>
       <ScrollToTop />
       <Navbar />
       <CartDrawer />
-      <main>
+      <main id="main-content">
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/shop" component={Shop} />

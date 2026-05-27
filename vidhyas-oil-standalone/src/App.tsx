@@ -35,9 +35,9 @@ function Router() {
 
   return (
     <>
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-[#1b4332] focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#1b4332] focus:text-white focus:rounded-full focus:text-sm"
       >
         Skip to content
       </a>
