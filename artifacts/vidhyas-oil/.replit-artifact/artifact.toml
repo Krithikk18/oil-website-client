@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Vidhya's Oil"
+version = "1.0.0"
+id = "artifacts/vidhyas-oil"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25354
+
+[services.development]
+run = "pnpm --filter @workspace/vidhyas-oil run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/vidhyas-oil", "run", "build" ]
+publicDir = "artifacts/vidhyas-oil/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25354"
+BASE_PATH = "/"
