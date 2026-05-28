@@ -2,6 +2,11 @@
   "name": "vidhyas-oil-workspace",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix vidhyas-oil-standalone",
+    "build": "npm run build --prefix vidhyas-oil-standalone",
+    "serve": "npm run serve --prefix vidhyas-oil-standalone"
+  },
   "devDependencies": {
     "prettier": "^3.8.3",
     "typescript": "~5.9.3"
