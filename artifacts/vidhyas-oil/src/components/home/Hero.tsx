@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 
-const wordReveal = {
+const wordReveal: Variants = {
   initial: { y: "100%", opacity: 0 },
   animate: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   animate: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } },
 };
 
